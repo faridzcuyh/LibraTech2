@@ -1,6 +1,6 @@
 <?php
 session_start(); // Memulai session
-$conn = mysqli_connect("localhost", "root", "", "perpustakaan");
+require_once __DIR__ . '/../config/koneksi.php';
 
 if (isset($_POST['login'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
@@ -24,7 +24,7 @@ if (isset($_POST['login'])) {
             $_SESSION['role']         = $row['role'];
 
             // Alihkan ke halaman utama dashboard
-            header("Location: home.php");
+            header("Location: ../user/home.php");
             exit;
         }
     }

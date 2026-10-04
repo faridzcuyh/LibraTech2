@@ -1,0 +1,172 @@
+/* ===== Login Page ===== */
+
+.login-page {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- Kolom kiri: form --- */
+.login-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 64px;
+    min-width: 0;
+}
+
+.login-header {
+    text-align: center;
+}
+
+.login-header h1 {
+    font-size: 48px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.login-header p {
+    color: #666;
+    font-size: 18px;
+}
+
+.login-form form {
+    width: 100%;
+    max-width: 420px;
+    margin: auto 0; /* push ke tengah vertikal antar header & signup */
+    padding: 40px 0;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    font-family: inherit;
+    font-size: 15px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #d9264d;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    font-size: 15px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.remember input {
+    width: 18px;
+    height: 18px;
+    accent-color: #d9264d;
+    cursor: pointer;
+}
+
+.forgot {
+    color: #000;
+    text-decoration: none;
+}
+
+.forgot:hover {
+    text-decoration: underline;
+}
+
+.btn-signin {
+    width: 100%;
+    padding: 14px;
+    background: #d9264d;
+    color: #fff;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-signin:hover {
+    background: #c01e43;
+}
+
+.signup-link {
+    text-align: center;
+    font-size: 15px;
+}
+
+.signup-link a {
+    color: #d9264d;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* --- Alert / pesan --- */
+.alert {
+    width: 100%;
+    max-width: 420px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 15px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.alert-error {
+    background: #fdecee;
+    color: #b3243f;
+    border: 1px solid #f5c2c9;
+}
+
+.alert-success {
+    background: #eaf6ec;
+    color: #1e7d33;
+    border: 1px solid #c7e6ce;
+}
+
+/* --- Kolom kanan: panel gambar --- */
+.login-image {
+    flex: 1;
+    background: #dcdcdc;
+    border-radius: 16px 0 0 16px;
+    min-width: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .login-image {
+        display: none;
+    }
+
+    .login-form {
+        padding: 32px 24px;
+    }
+
+    .login-header h1 {
+        font-size: 36px;
+    }
+}

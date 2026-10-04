@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['sudah_login'])) {
-    header("Location: login.php");
+    header("Location: ../auth/login.php");
     exit;
 }
 ?>
@@ -16,12 +16,8 @@ if (!isset($_SESSION['sudah_login'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <title>LibraTech</title>
-    <style>
-        body {
-            font-family: 'Ubuntu', sans-serif;
-        }
-    </style>
 </head>
 
 <body>
@@ -40,7 +36,7 @@ if (!isset($_SESSION['sudah_login'])) {
         <h3>Menu Umum</h3>
         <ul>
             <li><a href="library.php">Library</a></li>
-            <li><a href="logout.php" onclick="return confirm('yakin ingin keluar?')">Logout</a></li>
+            <li><a href="../auth/logout.php" onclick="return confirm('yakin ingin keluar?')">Logout</a></li>
         </ul>
 </body>
 
