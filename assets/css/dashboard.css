@@ -1,0 +1,109 @@
+/* ===== Layout Dashboard ===== */
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+    background: #f0f0f0;
+    padding: 40px;
+    min-width: 0;
+}
+
+/* ===== Welcome Card ===== */
+.welcome-card {
+    display: flex;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden; /* biar panel abu di kanan ikut melengkung */
+    min-height: 600px;
+}
+
+.card-text {
+    flex: 1;
+    padding: 48px;
+    max-width: 50%;
+}
+
+.card-text h1 {
+    font-size: 56px;
+    font-weight: 700;
+    color: #d9264d;
+    line-height: 1.2;
+    margin-bottom: 40px;
+}
+
+.card-text h1 .pink {
+    color: #e8607f; /* bagian nama user, lebih terang kayak design */
+}
+
+.card-text p {
+    color: #555;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.card-image {
+    flex: 1;
+    background: #dcdcdc;
+}
+
+/* ===== Card Menu Tambahan (misal menu petugas) ===== */
+.menu-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 28px 32px;
+    margin-top: 24px;
+}
+
+.menu-card h3 {
+    margin-bottom: 12px;
+}
+
+.menu-card ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+}
+
+.menu-card a {
+    color: #d9264d;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.menu-card a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .welcome-card {
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    .card-text {
+        max-width: 100%;
+        padding: 32px 24px;
+    }
+
+    .card-text h1 {
+        font-size: 36px;
+    }
+
+    .card-image {
+        min-height: 250px;
+    }
+}
