@@ -1,3 +1,10 @@
+/*
+ * sidebar.css - Komponen sidebar dashboard
+ * Diatur di sini: panel kiri (logo, menu nav + pil merah menu aktif,
+ * sekat border-right) dan user-card di bawah (avatar, nama, role).
+ * Dipakai oleh: semua halaman yang include includes/sidebar.php.
+ */
+
 /* ===== Sidebar ===== */
 .sidebar {
     width: 250px;
@@ -6,7 +13,7 @@
     flex-direction: column;
     background: #fff;
     padding: 32px 20px 20px;
-    border-right: 1px solid #eee;
+    border-right: 4px solid #d9264d; /* sekat sidebar ↔ konten */
 }
 
 .sidebar .logo {

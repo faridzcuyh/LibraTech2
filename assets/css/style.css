@@ -1,3 +1,10 @@
+/*
+ * style.css - Global / fondasi desain
+ * Diatur di sini: reset CSS (*), font Ubuntu (@import - WAJIB baris pertama
+ * setelah komentar), dan style dasar body (font, background, warna teks).
+ * Dipakai oleh: SEMUA halaman (auth & dashboard).
+ */
+
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
 
 /* ===== LibraTech - Global Styles ===== */
@@ -10,7 +17,7 @@
 
 body {
     font-family: 'Ubuntu', sans-serif;
-    background: #fff;
+    background: #ffffff;
     color: #000;
 }
 

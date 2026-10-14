@@ -1,3 +1,11 @@
+/*
+ * auth.css - Halaman autentikasi
+ * Diatur di sini: layout split-screen login & register (kolom form kiri,
+ * panel gambar kanan), input + shadow, tombol merah, row remember/forgot,
+ * alert error/success, dan link signup.
+ * Dipakai oleh: auth/login.php, auth/register.php.
+ */
+
 /* ===== Login Page ===== */
 
 .login-page {

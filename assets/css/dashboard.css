@@ -1,3 +1,11 @@
+/*
+ * dashboard.css - Layout & konten halaman dashboard
+ * Diatur di sini: frame .dashboard (flex sidebar + konten), area .content,
+ * welcome-card (judul + teks + panel gambar), menu-card, dan aturan
+ * responsive (sidebar numpuk di bawah 768px).
+ * Dipakai oleh: user/home.php, user/library.php, dst.
+ */
+
 /* ===== Layout Dashboard ===== */
 .dashboard {
     display: flex;
@@ -87,6 +95,8 @@
 
     .sidebar {
         width: 100%;
+        border-right: none;
+        border-bottom: 4px solid #6b6768; /* sekat ikut pindah ke bawah */
     }
 
     .welcome-card {
