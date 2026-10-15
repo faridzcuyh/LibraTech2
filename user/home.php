@@ -44,7 +44,7 @@ if (!isset($_SESSION['sudah_login'])) {
                 <div class="menu-card">
                     <h3>Menu Petugas</h3>
                     <ul>
-                        <li><a href="input_buku.php">Kelola Buku</a></li>
+                        <li><a href="../admin/kelola.php">Kelola Buku</a></li>
                         <li><a href="transaksi_pinjam.php">Transaksi Pinjam</a></li>
                     </ul>
                 </div>

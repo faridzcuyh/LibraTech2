@@ -4,17 +4,30 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Deteksi otomatis halaman aktif dari nama file yang sedang dirender
-$menu_aktif = basename($_SERVER['PHP_SELF'], '.php');
+// URI root aplikasi, misal '' (dserve dari root) atau '/LibraTech2' (dserve dari subfolder)
+$base  = rtrim(str_replace('\\', '/', dirname(dirname($_SERVER['SCRIPT_NAME']))), '/');
+$aktif = basename($_SERVER['SCRIPT_NAME']);
+$role  = $_SESSION['role'] ?? 'anggota';
+
+// Menu sidebar: 'dir' = folder penyimpan, 'role' = siapa yang boleh melihat
+$menu = [
+    ['label' => 'Home',        'dir' => 'user',  'file' => 'home.php',    'role' => ['admin', 'petugas', 'anggota']],
+    ['label' => 'Library',     'dir' => 'user',  'file' => 'library.php', 'role' => ['admin', 'petugas', 'anggota']],
+    ['label' => 'Pinjam',      'dir' => 'user',  'file' => 'pinjam.php',  'role' => ['admin', 'petugas', 'anggota']],
+    ['label' => 'Kelola Buku', 'dir' => 'admin', 'file' => 'kelola.php',  'role' => ['admin', 'petugas']],
+];
 ?>
 
 <aside class="sidebar">
-    <a href="home.php" class="logo">Libratech.</a>
+    <a href="<?= $base ?>/user/home.php" class="logo">Libratech.</a>
 
     <nav>
-        <a href="home.php" class="<?= $menu_aktif === 'home' ? 'active' : '' ?>">Home</a>
-        <a href="library.php" class="<?= $menu_aktif === 'library' ? 'active' : '' ?>">Library</a>
-        <a href="pinjam.php" class="<?= $menu_aktif === 'pinjam' ? 'active' : '' ?>">Pinjam</a>
+        <?php foreach ($menu as $item) : ?>
+            <?php if (!in_array($role, $item['role'], true)) {
+                continue;
+            } ?>
+            <a href="<?= $base ?>/<?= $item['dir'] ?>/<?= $item['file'] ?>" class="<?= $aktif === $item['file'] ? 'active' : '' ?>"><?= $item['label'] ?></a>
+        <?php endforeach; ?>
     </nav>
 
     <div class="user-card">

@@ -14,3 +14,15 @@ CREATE TABLE IF NOT EXISTS user (
   nama_lengkap VARCHAR(100) NOT NULL,
   role ENUM('admin', 'petugas', 'anggota') NOT NULL DEFAULT 'petugas'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Tabel buku (dipakai admin/kelola.php)
+CREATE TABLE IF NOT EXISTS buku (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  kategori VARCHAR(100) NOT NULL,
+  judul VARCHAR(255) NOT NULL,
+  penulis VARCHAR(150) NOT NULL,
+  status VARCHAR(50) NOT NULL,
+  badge VARCHAR(50) DEFAULT NULL,
+  sampul VARCHAR(255) DEFAULT 'default.jpg',
+  deskripsi TEXT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

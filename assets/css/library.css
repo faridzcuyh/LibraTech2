@@ -1,0 +1,280 @@
+/*
+ * library.css - Halaman Library
+ * Diatur di sini: bar pencarian (+ hasil & reset) dan rak buku responsif
+ * (book-grid, book-item sebagai kartu interaktif ber-deskripsi).
+ * Dipakai oleh: user/library.php
+ */
+
+/* ===== Bar Pencarian ===== */
+.search-bar {
+    display: block;
+    margin-bottom: 24px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 16px;
+    color: #334155;
+    background: #fff;
+    border: 2px solid pink;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.search-input:focus {
+    border-color: #d9264d;
+}
+
+.search-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #d9264d;
+    border: none;
+    border-radius: 25px;
+    outline: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.search-button:hover {
+    background-color: #b81f42;
+}
+
+.search-button:active {
+    transform: scale(0.97);
+}
+
+.search-reset {
+    font-size: 14px;
+    color: #d9264d;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.search-reset:hover {
+    text-decoration: underline;
+}
+
+.search-result {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.search-result strong {
+    color: #d9264d;
+}
+
+/* ===== Rak Buku ===== */
+.bookshelf-container {
+    width: 100%;
+}
+
+/* Grid menyesuaikan lebar layar: kartu melebar/menyusut otomatis */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 20px;
+}
+
+/* Kartu buku = <details>, klik sampul untuk buka/tutup deskripsi */
+.book-item {
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.book-item:hover,
+.book-item:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* Sampul + judul (ringkasan yang selalu terlihat) */
+.book-cover {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    list-style: none; /* buang tanda segitiga default <details> */
+}
+
+.book-cover::-webkit-details-marker {
+    display: none;
+}
+
+.book-cover img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4; /* tinggi mengikuti lebar, tidak gepeng */
+    object-fit: cover;
+    background-color: #dcdcdc; /* tampil saat gambar gagal dimuat */
+}
+
+.book-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 12px 12px;
+}
+
+.book-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #222;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.book-author {
+    font-size: 12px;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Tombol kecil "Detail" di pojok sampul */
+.book-toggle {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #d9264d;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 999px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.book-item[open] .book-toggle {
+    color: #fff;
+    background: #d9264d;
+}
+
+/* Panel deskripsi: menutupi separuh bawah kartu saat terbuka */
+.book-desc {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 62%;
+    padding: 12px 14px;
+    overflow-y: auto;
+    background: #fff;
+    border-top: 3px solid #d9264d;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+    animation: desc-in 0.18s ease;
+}
+
+@keyframes desc-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.book-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.book-cat,
+.book-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 999px;
+}
+
+.book-cat {
+    color: #d9264d;
+    background: #fdecef;
+}
+
+.book-badge {
+    color: #7a5b00;
+    background: #fff3cd;
+}
+
+.book-desc p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #444;
+}
+
+.book-desc p+p {
+    margin-top: 8px;
+}
+
+.book-status {
+    color: #666;
+}
+
+.book-status strong {
+    color: #333;
+}
+
+/* Gagal memuat data dari database */
+.book-error {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #721c24;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 6px;
+}
+
+/* State ketika hasil pencarian kosong */
+.book-empty {
+    padding: 40px 0;
+    text-align: center;
+    font-size: 15px;
+    color: #666;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .book-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 14px;
+    }
+
+    .book-title {
+        font-size: 13px;
+    }
+
+    .book-desc {
+        max-height: 70%;
+        font-size: 12px;
+    }
+}

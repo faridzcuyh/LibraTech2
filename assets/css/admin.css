@@ -1,0 +1,156 @@
+main.content {
+  flex: 1;
+  background-color: #eaeaea; /* Warna abu-abu background luar */
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Kotak abu-abu besar pembungkus form & tabel */
+.kelola-container {
+  display: flex !important;
+  flex-wrap: wrap; /* supaya pesan flash bisa memanjang di atas kedua panel */
+  gap: 20px;
+  width: 100%;
+  background-color: #d3d3d3; /* Warna abu bingkai dalam */
+  padding: 15px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Pesan sukses/gagal setelah submit form */
+.flash {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.flash-sukses {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.flash-error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+/* Box Putih Panel Kiri & Kanan */
+.panel-box {
+  flex: 1;
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 25px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333333;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+/* --- TAMPILAN FORM (KIRI) --- */
+.form-tambah {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"],
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  border: 1.5px solid #cccccc;
+  border-radius: 8px;
+  color: #333333;
+  box-sizing: border-box;
+  outline: none;
+  background-color: #ffffff;
+  resize: vertical;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+  border-color: #d9264d;
+}
+
+.form-action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+/* Tombol Merah Khas Libratech */
+.btn-tambah {
+  background-color: #d9264d;
+  color: #ffffff;
+  border: none;
+  padding: 12px 35px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-tambah:hover {
+  background-color: #b51c3d;
+}
+
+/* --- TAMPILAN TABEL DAFTAR BUKU (KANAN) --- */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-buku {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+/* Header Tabel */
+.table-buku thead th {
+  background-color: #dcdcdc;
+  color: #444444;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 10px;
+  border: 1px solid #bcbcbc;
+}
+
+/* Baris Kosong Bergaris Tipis */
+.table-buku tbody tr {
+  height: 52px;
+  border-bottom: 1.5px solid #cccccc;
+}
+
+/* Efek Garis Biru Tebal Sesuai Gambar */
+.table-buku tbody tr.row-blue-highlight {
+  border-bottom: 3px solid #0076db;
+}
