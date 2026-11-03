@@ -205,7 +205,7 @@ if ($result) {
                                         echo "<td>" . htmlspecialchars($row['status']) . "</td>";
                                         echo "<td>
                                                 <a href='edit.php?id=" . urlencode($row['id']) . "' style='color: #0076db; text-decoration:none; margin-right:5px;'>Edit</a>
-                                                <a href='hapus.php?id=" . urlencode($row['id']) . "' style='color: #d9264d; text-decoration:none;' onclick='return confirm(\"Yakin hapus?\")'>Hapus</a>
+                                            <a href='hapus.php?id=" . urlencode($row['id']) . "' style='color: #d9264d; text-decoration:none;' onclick='return confirm(\"Yakin hapus?\")'>Hapus</a>
                                             </td>";
                                         echo "</tr>";
                                     }

@@ -15,6 +15,7 @@ $menu = [
     ['label' => 'Library',     'dir' => 'user',  'file' => 'library.php', 'role' => ['admin', 'petugas', 'anggota']],
     ['label' => 'Pinjam',      'dir' => 'user',  'file' => 'pinjam.php',  'role' => ['admin', 'petugas', 'anggota']],
     ['label' => 'Kelola Buku', 'dir' => 'admin', 'file' => 'kelola.php',  'role' => ['admin', 'petugas']],
+    ['label' => 'Logout',      'dir' => 'user',  'file' => 'logout.php',  'role' => ['admin', 'petugas', 'anggota']],
 ];
 ?>
 
