@@ -16,6 +16,25 @@ require_once __DIR__ . '/../config/koneksi.php';
 
 $id = (int) ($_GET['id'] ?? 0);
 
+$stmtRiwayat = mysqli_prepare($conn, 'SELECT id FROM peminjaman WHERE buku_id = ? LIMIT 1');
+if (!$stmtRiwayat) {
+    error_log('Query cek riwayat peminjaman gagal: ' . mysqli_error($conn));
+    $_SESSION['flash'] = ['tipe' => 'error', 'pesan' => 'Buku gagal dihapus.'];
+    header('Location: kelola.php');
+    exit;
+}
+
+$stmtRiwayat->bind_param('i', $id);
+$stmtRiwayat->execute();
+$memilikiRiwayat = (bool) $stmtRiwayat->get_result()->fetch_assoc();
+$stmtRiwayat->close();
+
+if ($memilikiRiwayat) {
+    $_SESSION['flash'] = ['tipe' => 'error', 'pesan' => 'Buku tidak dapat dihapus karena memiliki riwayat peminjaman.'];
+    header('Location: kelola.php');
+    exit;
+}
+
 // Nama sampul diambil dulu; setelah barisnya dihapus tidak bisa dibaca lagi
 $sampul = '';
 $result = mysqli_query($conn, "SELECT sampul FROM buku WHERE id = $id");

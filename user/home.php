@@ -14,8 +14,8 @@ if (!isset($_SESSION['sudah_login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/sidebar.css">
-    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/sidebar.css?v=5">
+    <link rel="stylesheet" href="../assets/css/dashboard.css?v=5">
     <title>LibraTech - Home</title>
 </head>
 
@@ -45,7 +45,7 @@ if (!isset($_SESSION['sudah_login'])) {
                     <h3>Menu Petugas</h3>
                     <ul>
                         <li><a href="../admin/kelola.php">Kelola Buku</a></li>
-                        <li><a href="transaksi_pinjam.php">Transaksi Pinjam</a></li>
+                        <li><a href="pinjam.php">Transaksi Pinjam</a></li>
                     </ul>
                 </div>
             <?php endif; ?>

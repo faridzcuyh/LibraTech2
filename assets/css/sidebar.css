@@ -6,7 +6,13 @@
  */
 
 /* ===== Sidebar ===== */
+/* Fixed ke viewport: tidak pernah ikut scroll & tidak rentan
+   quirk overflow ancestor seperti sticky */
 .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
     width: 250px;
     flex-shrink: 0;
     display: flex;
@@ -14,7 +20,15 @@
     background: #fff;
     padding: 32px 20px 20px;
     border-right: 4px solid #d9264d; /* sekat sidebar ↔ konten */
+    overflow-y: auto; /* layar pendek & menu penuh */
 }
+
+/* Karena .sidebar keluar dari flow, konten diberi jarak selebar sidebar
+   (250px sudah termasuk border-right, karena box-sizing: border-box) */
+.dashboard {
+    padding-left: 250px;
+}
+
 
 .sidebar .logo {
     color: #d9264d;
@@ -46,6 +60,15 @@
     background: #d9264d;
     color: #fff;
     box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Pembungkus menu: flex column + grew biar margin-top:auto pada
+   user-card tetap nempel ke dasar sidebar seperti sebelumnya */
+.sidebar-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
 }
 
 /* Kartu user nempel di bawah */
@@ -85,4 +108,76 @@
 .user-card .user-role {
     color: #666;
     text-transform: capitalize;
+}
+
+/* hanya tampil di mobile */
+.sidebar-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.sidebar-toggle span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    border-radius: 2px;
+    background: #d9264d;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        /* jadi bar atas yang nempel, bukan panel kiri tinggi penuh */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: auto;
+        width: auto;
+        height: auto;
+        max-height: 100vh;
+        padding: 16px 20px; /* bar atas jadi ramping */
+        z-index: 100;
+    }
+
+    .dashboard {
+        padding-left: 0;
+        padding-top: 78px; /* ruang buat bar: 16+42(logo)+16+4(batas) */
+    }
+
+    .sidebar .logo {
+        margin-bottom: 0;
+    }
+
+    .sidebar-toggle {
+        display: flex; /* mobile: tombol muncul */
+    }
+
+    /* Menu di-roll: default tertutup */
+    .sidebar-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .sidebar-body.terbuka {
+        max-height: 500px;
+    }
+
+    .sidebar-body nav {
+        padding-top: 16px;
+    }
+
+    .user-card {
+        margin-top: 16px; /* gantikan margin-top:auto */
+    }
 }

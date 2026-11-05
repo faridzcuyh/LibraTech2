@@ -55,8 +55,8 @@ if ($stmt) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LibraTech - Library</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/sidebar.css">
-    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/sidebar.css?v=5">
+    <link rel="stylesheet" href="../assets/css/dashboard.css?v=5">
     <link rel="stylesheet" href="../assets/css/library.css">
 </head>
 

@@ -4,10 +4,6 @@ Plain PHP + mysqli app (no framework, no Composer, no npm, no build/test/lint pi
 
 ## Run
 
-```bash
-php -S localhost:8000        # from project root; entry: http://localhost:8000/
-```
-
 Requires MySQL/MariaDB running with database `perpustakaan` (import `database.sql`). DB credentials are hardcoded in `config/koneksi.php` (`root`, empty password). There is no automated test suite — verify changes by curling the dev server (login flow, redirects) or manually in the browser.
 
 ## Architecture
