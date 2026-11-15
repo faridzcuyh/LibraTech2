@@ -15,7 +15,8 @@ if (!isset($_SESSION['sudah_login'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css?v=5">
-    <link rel="stylesheet" href="../assets/css/dashboard.css?v=5">
+    <link rel="stylesheet" href="../assets/css/dashboard.css?v=6">
+    <link rel="stylesheet" href="../assets/css/admin.css">
     <title>LibraTech - Home</title>
 </head>
 
@@ -26,29 +27,38 @@ if (!isset($_SESSION['sudah_login'])) {
 
         <main class="content">
 
-            <div class="welcome-card">
-                <div class="card-text">
-                    <h1>Selamat Datang, <span class="pink">"<?= htmlspecialchars($_SESSION['nama']) ?>"</span></h1>
-                    <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries, but also the leap into
-                        electronic typesetting, remaining essentially unchanged.
-                    </p>
-                </div>
-                <div class="card-image"></div>
-            </div>
+            <!-- Bingkai + panel box, sama seperti Library/Pinjam/Kelola -->
+            <div class="kelola-container home-frame">
 
-            <?php if ($_SESSION['role'] == 'petugas') : ?>
-                <div class="menu-card">
-                    <h3>Menu Petugas</h3>
-                    <ul>
-                        <li><a href="../admin/kelola.php">Kelola Buku</a></li>
-                        <li><a href="pinjam.php">Transaksi Pinjam</a></li>
-                    </ul>
-                </div>
-            <?php endif; ?>
+                <section class="panel-box home-panel">
+                    <div class="welcome-card">
+                        <div class="card-text">
+                            <h1>Selamat Datang, <span class="pink">"<?= htmlspecialchars($_SESSION['nama']) ?>"</span></h1>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                when an unknown printer took a galley of type and scrambled it to make a type
+                                specimen book. It has survived not only five centuries, but also the leap into
+                                electronic typesetting, remaining essentially unchanged.
+                            </p>
+                        </div>
+                        <div class="card-image"></div>
+                    </div>
+                </section>
+
+                <?php if ($_SESSION['role'] == 'petugas') : ?>
+                    <section class="panel-box home-panel">
+                        <div class="menu-card">
+                            <h3>Menu Petugas</h3>
+                            <ul>
+                                <li><a href="../admin/kelola.php">Kelola Buku</a></li>
+                                <li><a href="pinjam.php">Transaksi Pinjam</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                <?php endif; ?>
+
+            </div><!-- /.kelola-container -->
 
         </main>
 

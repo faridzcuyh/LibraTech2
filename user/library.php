@@ -57,13 +57,22 @@ if ($stmt) {
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css?v=5">
     <link rel="stylesheet" href="../assets/css/dashboard.css?v=5">
-    <link rel="stylesheet" href="../assets/css/library.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/library.css?v=4">
 </head>
 
 <body class="dashboard">
     <?php include __DIR__ . '/../includes/sidebar.php'; ?>
 
     <main class="content">
+        <!-- Bingkai konten sama seperti halaman Pinjam & Kelola Buku -->
+        <div class="kelola-container">
+        <?php if ($error_db !== '') : ?>
+            <p class="book-error"><?= htmlspecialchars($error_db) ?></p>
+        <?php endif; ?>
+
+        <!-- Panel 1: Pencarian -->
+        <section class="panel-box library-panel search-panel">
         <search class="search-bar">
             <form action="library.php" method="get" class="search-container">
                 <input type="search" class="search-input" name="q" value="<?= htmlspecialchars($q) ?>" placeholder="Cari judul, penulis, atau kategori..." autocomplete="off">
@@ -80,12 +89,10 @@ if ($stmt) {
                 <?php endif; ?>
             </p>
         </search>
+        </section>
 
-        <?php if ($error_db !== '') : ?>
-            <p class="book-error"><?= htmlspecialchars($error_db) ?></p>
-        <?php endif; ?>
-
-        <!-- Bagian Rak Buku dengan Sampul -->
+        <!-- Panel 2: Rak Buku -->
+        <section class="panel-box library-panel">
         <div class="bookshelf-container">
             <?php if (count($buku) === 0) : ?>
                 <p class="book-empty">
@@ -129,6 +136,8 @@ if ($stmt) {
                 </div>
             <?php endif; ?>
         </div>
+        </section>
+        </div><!-- /.kelola-container -->
     </main>
 </body>
 

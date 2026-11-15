@@ -5,10 +5,37 @@
  * Dipakai oleh: user/library.php
  */
 
+/* ===== Panel pembungkus (search & rak buku dipisah, ala Pinjam/Kelola) ===== */
+/* Container kelola-container ditarik setinggi main.content (align-items:
+   stretch), dan align-content default stretch membagi sisa tinggi ke tiap
+   baris flex -> panel jadi melompong. Kunci ke atas biar tinggi mepet konten */
+.kelola-container {
+    align-content: flex-start;
+}
+
+/* flex-basis 100% supaya dua panel bertumpuk atas-bawah, bukan sejajar
+   kiri-kanan (flex: 1 dari .panel-box bikin basis 0% & width diabaikan) */
+.library-panel {
+    flex: 0 0 100%;
+    width: 100%;
+}
+
+/* ===== Panel Search (tinggi mepet konten) ===== */
+/* memangkas padding .panel-box (25px dari admin.css); library.css dimuat
+   setelah admin.css jadi override ini menang tanpa !important */
+.search-panel {
+    padding: 8px 20px;
+}
+
+.search-panel .search-result {
+    margin-top: 6px; /* merapatkan teks hasil ke form */
+}
+
 /* ===== Bar Pencarian ===== */
 .search-bar {
     display: block;
-    margin-bottom: 24px;
+    width: 100%; /* biar tetap melebar penuh di dalam .kelola-container (flex) */
+    margin-bottom: 0; /* jarak sudah diatur padding .panel-box */
 }
 
 .search-container {
@@ -245,6 +272,7 @@
 
 /* Gagal memuat data dari database */
 .book-error {
+    width: 100%; /* sama seperti .flash, ikut flex-wrap di .kelola-container */
     margin-bottom: 16px;
     padding: 12px 16px;
     font-size: 14px;

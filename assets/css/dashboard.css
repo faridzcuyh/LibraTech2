@@ -19,6 +19,30 @@
     min-width: 0;
 }
 
+/* ===== Home: bingkai kelola-container + panel box ===== */
+/* align-content flex-start: cegah baris panel meregang mengisi tinggi
+   container (kelola-container ditarik stretch oleh main.content) */
+.home-frame {
+    align-content: flex-start;
+}
+
+/* Panel ditumpuk vertikal, bukan sejajar kiri-kanan */
+.home-panel {
+    flex: 0 0 100%;
+    width: 100%;
+}
+
+/* welcome-card & menu-card sudah di dalam panel putih,
+   buang kartu putih bertumpuk + bayangannya */
+.home-panel .welcome-card,
+.home-panel .menu-card {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+    margin-top: 0;
+}
+
 /* ===== Welcome Card ===== */
 .welcome-card {
     display: flex;
