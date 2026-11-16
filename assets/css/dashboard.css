@@ -20,51 +20,54 @@
 }
 
 /* ===== Home: bingkai kelola-container + panel box ===== */
-/* align-content flex-start: cegah baris panel meregang mengisi tinggi
-   container (kelola-container ditarik stretch oleh main.content) */
+/* baris panel diregangkan mengisi tinggi bingkai abu (default stretch),
+   jadi panel TIDAK menyusut ikut isi */
 .home-frame {
-    align-content: flex-start;
+    align-content: stretch;
+}
+
+/* Panel teks + gambar jadi satu baris; gambar abu di luar panel putih */
+.home-top-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    align-items: stretch;
 }
 
 /* Panel ditumpuk vertikal, bukan sejajar kiri-kanan */
 .home-panel {
-    flex: 0 0 100%;
-    width: 100%;
+    flex: 1.2; /* di dalam .home-top-row: ~55% lebar */
+    min-width: 0;
+    padding: 16px; /* lebih mepet dari .panel-box (25px) */
 }
 
-/* welcome-card & menu-card sudah di dalam panel putih,
-   buang kartu putih bertumpuk + bayangannya */
-.home-panel .welcome-card,
+/* Panel Menu Petugas tetap sebaris penuh */
+.home-menu-panel {
+    flex: 0 0 100%;
+}
+
+/* menu-card sudah di dalam panel putih, buang kartu bertumpuk + bayangannya;
+   flex: 1 biar kartu mengisi penuh tinggi panel */
 .home-panel .menu-card {
     background: transparent;
     box-shadow: none;
     border-radius: 0;
     overflow: visible;
     margin-top: 0;
-}
-
-/* ===== Welcome Card ===== */
-.welcome-card {
-    display: flex;
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    overflow: hidden; /* biar panel abu di kanan ikut melengkung */
-    min-height: 600px;
-}
-
-.card-text {
     flex: 1;
-    padding: 48px;
-    max-width: 50%;
+}
+
+/* ===== Isi kolom kiri (welcome) ===== */
+.card-text {
+    padding: 24px 28px; /* mepet, jarak antar blok udah diatur rule kartu */
 }
 
 .card-text h1 {
-    font-size: 56px;
+    font-size: 66px;
     font-weight: 700;
     color: #d9264d;
     line-height: 1.2;
-    margin-bottom: 40px;
+    margin-bottom: 16px;
 }
 
 .card-text h1 .pink {
@@ -77,13 +80,133 @@
     line-height: 1.6;
 }
 
+/* Gambar ruang perpustakaan (horizontal 1380x776) di dalam kolom vertikal:
+   cover bikin lebar overflow -> di-pan pelan dari kiri ke kanan */
 .card-image {
-    flex: 1;
-    background: #dcdcdc;
+    flex: 1; /* ~45% lebar, sejajar panel teks */
+    border-radius: 10px;
+    background: #d9d9d9 url('../images/ruangan_perpustakaan.jpg') left center / cover no-repeat;
+    animation: pan-kiri-kanan 24s ease-in-out infinite alternate;
 }
 
-/* ===== Card Menu Tambahan (misal menu petugas) ===== */
-.menu-card {
+@keyframes pan-kiri-kanan {
+    from { background-position: left center; }  /* tepi kiri gambar */
+    to   { background-position: right center; } /* geser ke tepi kanan */
+}
+
+/* judul "Selamat Datang" mepet atas panel; kartu2 didorong ke bawah */
+.home-panel .card-text {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+}
+
+/* ===== Home Dashboard: Paling dicari & statistik ===== */
+.popular-card,
+.stat-card {
+    background: #d9d9d9;
+    border-radius: 10px;
+    padding: 16px 18px;
+}
+
+.popular-card {
+    margin-top: auto; /* dorong deretan kartu ke dasar panel */
+    margin-bottom: 16px;
+}
+
+.stat-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    flex: 1; /* dua kartu bagi rata lebar kolom, seperti design */
+    min-width: 130px;
+    display: flex;
+    flex-direction: column;
+    min-height: 170px;
+}
+
+/* .card-text .x (2 kelas) biar menang atas .card-text p di atas */
+.card-text .stat-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 10px;
+}
+
+/* angka statistik: besar & tengah di sisa kartu (ala design) */
+.card-text .stat-number {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 112px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* warna angka: .card-text p (0,1,1) ngalahin .stat-merah doang,
+   jadi pakai .card-text .stat-x (0,2,0) */
+.card-text .stat-merah {
+    color: #d9264d;
+}
+
+.card-text .stat-hijau {
+    color: #22b14c;
+}
+
+/* Deretan sampul numpuk ke kanan dalam kartu (ala design) */
+.popular-grid {
+    display: flex;
+    justify-content: flex-end;
+    gap: 50px;
+    padding-right: 6px;
+}
+
+.popular-item {
+    position: relative;
+    width: 120px;
+}
+
+/* Angka ranking raksasa di belakang sampul: #1 merah pekat, #2-3 pink
+   (persis Group 1.svg). Pusat digeser ke kiri biar setengah nyembul */
+.card-text .popular-rank {
+    position: absolute;
+    top: 50%;
+    left: %;
+    transform: translate(-50%, -50%);
+    font-size: 160px;
+    font-weight: 700;
+    color: #f2a6b6;
+    line-height: 1;
+    z-index: 1;
+}
+
+.popular-item:first-child .popular-rank {
+    color: #e4234b;
+}
+
+.popular-item img {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    background-color: #dcdcdc;
+}
+
+.card-text .popular-empty {
+    font-size: 14px;
+    color: #666;
+}
+
+/* ===== Card Menu Tambahan (misal menu petugas) ===== */.menu-card {
     background: #fff;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -123,18 +246,32 @@
         border-bottom: 4px solid #6b6768; /* sekat ikut pindah ke bawah */
     }
 
-    .welcome-card {
+    .home-top-row {
         flex-direction: column;
-        min-height: 0;
     }
 
     .card-text {
-        max-width: 100%;
         padding: 32px 24px;
     }
 
     .card-text h1 {
         font-size: 36px;
+    }
+
+    .card-text .stat-number {
+        font-size: 64px;
+    }
+
+    .card-text .popular-rank {
+        font-size: 120px;
+    }
+
+    .popular-item {
+        width: 90px;
+    }
+
+    .popular-grid {
+        gap: 20px;
     }
 
     .card-image {
